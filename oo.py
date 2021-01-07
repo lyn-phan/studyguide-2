@@ -147,6 +147,56 @@ def example():
 
     Lynda_FinalExam.take_test()
 
+""""Part 4: Inheritance"""
+
+class Quiz(object):
+    """Instantiates quiz object"""
+    
+    def administer(self):
+
+        score = super(Quiz, self).administer()
+
+        if quiz >= 0.5:
+            return 1
+        else:
+            return 0
 
 
+class StudentQuiz(object):
+    """stores a student, a quiz, and student's score"""
+
+    def __init__(self, student, quiz):
+        self.student = student
+        self.quiz = quiz
+        self.score = None 
+
+    def take_test(self):
+    """administers the exame and assigns score to student exam instance"""
+        self.score = self.quiz.administer()
+
+        if self.score:
+            print("You passed!")
+        
+        else:
+            print("Sorry, you didn't pass")
+
+def example():
+
+    quiz = Quiz("PopQuiz")
+
+    q1 = Question("Who won the NBA championship in 2020?")
+    quiz.add_question(q1)
+
+    q2 = Question("Who shot the most 3s in the NBA in 2020?")
+    quiz.add_question(q2)
+
+    student = Student(
+        "Marvin",
+        "Roque",
+        "100 Disneyland Drive" 
+        )
+    
+    Marvin_popquiz = StudentQuiz(student, quiz)
+
+    Marvin_popquiz.take_test()
 
